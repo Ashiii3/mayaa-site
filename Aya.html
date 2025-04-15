@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Falling Hearts</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #111;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      animation: fall linear infinite;
+    }
+
+    .heart-shape {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      background-color: #FF0090;
+      transform: rotate(-45deg);
+      top: 10px;
+      left: 10px;
+    }
+
+    .heart-shape::before,
+    .heart-shape::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #FFA9D8;
+      border-radius: 50%;
+    }
+
+    .heart-shape::before {
+      top: -20px;
+      left: 0;
+    }
+
+    .heart-shape::after {
+      left: 20px;
+      top: 0;
+    }
+
+    .letter {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+      font-family: sans-serif;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -60px;
+        opacity: 1;
+      }
+      100% {
+        top: 100vh;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const letters = ['A', 'M', 'A', 'Y', 'A'];
+  const count = 20;
+
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    heart.style.animationDelay = (Math.random() * 5) + 's';
+
+    const shape = document.createElement('div');
+    shape.className = 'heart-shape';
+
+    const letter = document.createElement('div');
+    letter.className = 'letter';
+    letter.textContent = letters[Math.floor(Math.random() * letters.length)];
+
+    heart.appendChild(shape);
+    heart.appendChild(letter);
+    document.body.appendChild(heart);
+  }
+</script>
+<center>
+  <br><br><br><br><br><br><br>
+<p>
+  <font color="#FF0090">
+    Keep doing what you love and what you want
+    <br>
+    and also show me more of your drawing! 
+    <br>
+    They're all really cool :) 
+    <br> <br>
+    
+    
+  </font>
+
+</p>
+</body>
+</html>
